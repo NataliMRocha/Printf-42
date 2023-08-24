@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:30:22 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/24 12:37:46 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:18:36 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,17 @@ int	ft_putnbr_uns(unsigned int nb)
 	return (size);
 }
 
-// #include <stdio.h>
-// int main()
-// {
-// 	int i = 001212;
-// 	int result = ft_putnbr(i);
-// 	printf("%c", '\n');
-// 	printf("%d", result);
-// 	printf("%c", '\n');
-// 	int result_2 = printf("%d", i);
-// 	printf("%c", '\n');
-// 	printf("%d", result_2);
-// }
+int	ft_putnbr_hx(unsigned int hx, char *base)
+{
+	int			size;
+
+	size = 0;
+	if (hx < 16)
+		size += ft_putchar(base[hx % 16]);
+	else if (hx >= 16)
+	{
+		size += ft_putnbr_hx(hx / 16, base);
+		size += ft_putchar(base[hx % 16]);
+	}
+	return (size);
+}
