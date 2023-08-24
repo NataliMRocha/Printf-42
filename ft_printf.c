@@ -6,24 +6,11 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:50:19 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/24 15:42:10 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/24 16:52:46 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == (unsigned char)c)
-		return ((char *)s);
-	return (NULL);
-}
 
 int	ft_checkformat(char type, va_list arg)
 {
@@ -60,7 +47,7 @@ int	ft_printf(const char *format, ...)
 	va_start(arg, format);
 	while (format[i])
 	{
-		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]) != 0)
+		if (format[i] == '%' && format[i + 1] != 0)
 		{
 			size += ft_checkformat(format[i + 1], arg);
 			i++;
