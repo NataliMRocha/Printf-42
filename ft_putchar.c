@@ -6,19 +6,18 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:06:39 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/23 14:46:33 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:51:27 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	size_t	size;
+	int	size;
 
 	write(1, &c, 1);
 	size = 1;
-	
 	return (size);
 }
 

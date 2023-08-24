@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:12:31 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/23 22:42:32 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/24 12:43:00 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/* size_t	ft_putchar(char c)
+/* int	ft_putchar(char c)
 {
 	size_t	size;
 
@@ -22,12 +22,12 @@
 	return (size);
 } */
 
-size_t	ft_putptr(unsigned long int ptr)
+int	ft_putptr(unsigned long int ptr)
 {
 	char		*base;
-	size_t		size;
+	int			size;
 
-	if (ptr == NULL || ptr == 0)
+	if ((void *)ptr == NULL || ptr == 0)
 	{
 		write(1, "(nil)", 5);
 		size = 5;

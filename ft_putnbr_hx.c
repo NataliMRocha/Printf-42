@@ -6,26 +6,25 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:47:47 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/23 16:17:44 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:37:29 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// size_t	ft_putchar(char c)
+// int	ft_putchar(char c)
 // {
-// 	size_t	size;
+// 	int	size;
 
 // 	write(1, &c, 1);
 // 	size = 1;
-	
 // 	return (size);
 // }
 
-size_t	ft_putnbr_hx_lower(unsigned int hx)
+int	ft_putnbr_hx_lower(unsigned int hx)
 {
 	char		*base;
-	size_t		size;
+	int			size;
 
 	if (hx == 0)
 	{
@@ -43,13 +42,12 @@ size_t	ft_putnbr_hx_lower(unsigned int hx)
 		size += ft_putchar(base[hx % 16]);
 	}
 	return (size);
-	
 }
 
-size_t	ft_putnbr_hx_upper(unsigned int hx)
+int	ft_putnbr_hx_upper(unsigned int hx)
 {
 	char		*base;
-	size_t		size;
+	int			size;
 
 	if (hx == 0)
 	{
@@ -67,7 +65,6 @@ size_t	ft_putnbr_hx_upper(unsigned int hx)
 		size += ft_putchar(base[hx % 16]);
 	}
 	return (size);
-	
 }
 
 // #include <stdio.h>

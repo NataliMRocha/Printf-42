@@ -10,10 +10,11 @@ SRC =	./ft_printf.c \
 		./ft_putnbr.c \
 		./ft_putnbr_hx.c \
 		./ft_putptr.c \
+		./ft_checkformat.c
 
 OBJECTS = $(SRC:%.c=%.o)
 
-INCLUDES = libftprintf.h
+INCLUDES = ft_printf.h
 
 RM = rm -f
 
