@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:05:40 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/24 15:20:34 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:42:28 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <stdlib.h>
 # include <stdarg.h>
 
 int	ft_printf(const char *format, ...);
