@@ -15,6 +15,7 @@ SRC_B =	./ft_printf_bonus.c \
 		./ft_putchar_bonus.c \
 		./ft_putnbr_bonus.c \
 		./ft_putptr_bonus.c \
+		./ft_flags_bonus.c \
 
 OBJECTS_B = $(SRC_B:%.c=%.o)
 

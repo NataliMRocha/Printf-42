@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 08:28:41 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 11:15:25 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 12:26:25 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ int	ft_printf(const char *format, ...)
 		if (format[sizes.i] == '%' && format[sizes.i + 1] != 0)
 		{
 			if (format[sizes.i + 1] == '#')
-				ft_hash(format, &sizes);
-			if (format[sizes.i + 1] == ' ')
-				ft_space(format, &sizes);
-			sizes.size += ft_checkformat(format[sizes.i + 1], arg);
+				ft_hash(format, &sizes, arg);
+			else if (format[sizes.i + 1] == ' ')
+				ft_space(format, &sizes, arg);
+			else
+				sizes.size += ft_checkformat(format[sizes.i + 1], arg);
 			sizes.i++;
 		}
 		else
@@ -67,11 +68,11 @@ int	ft_printf(const char *format, ...)
 #include <limits.h>
 int main ()
 {
-	int result = ft_printf(" %#x ",0);
+	int result = ft_printf("%i", 5);
 	printf("\n");
 	printf("%i", result);
 	printf("\n");
-	int result_2 = printf(" %#x ",0);
+	int result_2 = printf("%+s", "nat");
 	printf("\n");
 	printf("%i", result_2);
 	printf("\n");

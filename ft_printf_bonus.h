@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:05:40 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/26 11:14:56 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:51:41 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_putnbr_hx(unsigned int hx, char *base);
  * @return the amount of bytes that were written
 */
 int		ft_putptr(unsigned long ptr, char *base);
-void	ft_space(const char *format, t_sizes *sizes);
-void	ft_hash(const char *format, t_sizes *sizes);
+void	ft_space(const char *format, t_sizes *sizes, va_list arg);
+void	ft_hash(const char *format, t_sizes *sizes, va_list arg);
 
 #endif
