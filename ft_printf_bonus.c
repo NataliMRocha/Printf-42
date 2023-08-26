@@ -6,11 +6,11 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 08:28:41 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 08:41:34 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 09:50:32 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	ft_checkformat(char type, va_list arg)
 {
@@ -36,7 +36,7 @@ int	ft_checkformat(char type, va_list arg)
 	return (size);
 }
 
-void	ft_flag(const char *format, t_sizes *sizes)
+void	ft_flag(const char *format, t_sizes *sizes, va_list *arg)
 {
 	sizes->i++;
 	if (format[sizes->i + 1] == 'x')
@@ -70,7 +70,7 @@ int	ft_printf(const char *format, ...)
 		if (format[sizes.i] == '%' && format[sizes.i + 1] != 0)
 		{
 			if (format[sizes.i + 1] == '#' || format[sizes.i + 1] == ' ')
-				ft_flag(format, &sizes);
+				ft_flag(format, &sizes, &arg);
 			sizes.size += ft_checkformat(format[sizes.i + 1], arg);
 			sizes.i++;
 		}
@@ -83,16 +83,14 @@ int	ft_printf(const char *format, ...)
 }
 
 #include <stdio.h>
-int main()
+#include <limits.h>
+int main ()
 {
-	int i = 258;
-	int	a = 582;
-	
-	int result = ft_printf("% d, % i, %#X, %#x, %x", i, a, a , i, i);
+	int result = ft_printf(" %#x ", 0);
 	printf("\n");
 	printf("%i", result);
 	printf("\n");
-	int result_2 = printf("% d, % i, %#X, %#x, %x", i, a, a ,i, i);
+	int result_2 = printf(" %#x ", 0);
 	printf("\n");
 	printf("%i", result_2);
 	printf("\n");

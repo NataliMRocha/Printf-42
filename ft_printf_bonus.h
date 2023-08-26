@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:05:40 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/26 09:13:31 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 09:43:05 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUSH
+# define FT_PRINTF__BONUSH
 
 # include <unistd.h>
 # include <stdarg.h>
+
+typedef	struct s_sizes{
+	int	i;
+	int	size;
+} t_sizes;
 
 /**@brief Repeat the behavior of the printf fuction
  * 
@@ -76,5 +81,6 @@ int		ft_putnbr_hx(unsigned int hx, char *base);
  * @return the amount of bytes that were written
 */
 int		ft_putptr(unsigned long ptr, char *base);
+void	ft_flag(const char *format, t_sizes *size, va_list *arg);
 
 #endif
