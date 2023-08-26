@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:05:40 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/24 16:53:19 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/08/26 08:31:47 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+typedef struct s_sizes{
+	int	i;
+	int	size;
+}	t_sizes;
+
 /**@brief Repeat the behavior of the printf fuction
  * 
  * @param format the format of conversion to do and all arguments passed
  * @return the amount of bytes that were written
 */
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
 /**@brief Receives the format and checks if it is a conversion
  * to handle and if it is true, passes the respective argument
@@ -31,35 +36,35 @@ int	ft_printf(const char *format, ...);
  * @param arg the list of arguments
  * @return the amount of bytes that were written
 */
-int	ft_checkformat(char type, va_list arg);
+int		ft_checkformat(char type, va_list arg);
 
 /**@brief Outputs the character 'c' in the standard output.
  * 
  * @param c the character to output
  * @return the amount of bytes that were written
 */
-int	ft_putchar(char c);
+int		ft_putchar(char c);
 
 /**@brief Outputs the string 'str' in the standard output.
  * 
  * @param str the string to output
  * @return the amount of bytes that were written
 */
-int	ft_putstr(char *str);
+int		ft_putstr(char *str);
 
 /**@brief Outputs the integer 'nb' in the standard output.
  * 
  * @param nb the integer to output
  * @return the amount of bytes that were written
 */
-int	ft_putnbr(int nb);
+int		ft_putnbr(int nb);
 
 /**@brief Outputs the unsigned integer 'nb' in the standard output.
  * 
  * @param nb the integer to output
  * @return the amount of bytes that were written
 */
-int	ft_putnbr_uns(unsigned int nb);
+int		ft_putnbr_uns(unsigned int nb);
 
 /**@brief Outputs the hexadecimal integer 'hx' in the standard output.
  * 
@@ -67,7 +72,7 @@ int	ft_putnbr_uns(unsigned int nb);
  * @param base the base of the hexadecimal number
  * @return the amount of bytes that were written
 */
-int	ft_putnbr_hx(unsigned int hx, char *base);
+int		ft_putnbr_hx(unsigned int hx, char *base);
 
 /**@brief Outputs the pointer adress 'ptr' in the standard output.
  * 
@@ -75,6 +80,7 @@ int	ft_putnbr_hx(unsigned int hx, char *base);
  * @param base the base of the hexadecimal number
  * @return the amount of bytes that were written
 */
-int	ft_putptr(unsigned long ptr, char *base);
+int		ft_putptr(unsigned long ptr, char *base);
+void	ft_flag(const char *format, t_sizes *size);
 
 #endif
