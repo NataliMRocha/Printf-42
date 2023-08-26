@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 08:28:41 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 09:50:32 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 11:15:25 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,6 @@ int	ft_checkformat(char type, va_list arg)
 	return (size);
 }
 
-void	ft_flag(const char *format, t_sizes *sizes, va_list *arg)
-{
-	sizes->i++;
-	if (format[sizes->i + 1] == 'x')
-	{
-		sizes->size += ft_putstr("0x");
-		return ;
-	}
-	if (format[sizes->i + 1] == 'X')
-	{
-		sizes->size += ft_putstr("0X");
-		return ;
-	}
-	if (format[sizes->i + 1] == 'i' || format[sizes->i + 1] == 'd')
-	{
-		sizes->size += ft_putchar(' ');
-		return ;
-	}
-	return ;
-}
-
 int	ft_printf(const char *format, ...)
 {
 	va_list	arg;
@@ -69,8 +48,10 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[sizes.i] == '%' && format[sizes.i + 1] != 0)
 		{
-			if (format[sizes.i + 1] == '#' || format[sizes.i + 1] == ' ')
-				ft_flag(format, &sizes, &arg);
+			if (format[sizes.i + 1] == '#')
+				ft_hash(format, &sizes);
+			if (format[sizes.i + 1] == ' ')
+				ft_space(format, &sizes);
 			sizes.size += ft_checkformat(format[sizes.i + 1], arg);
 			sizes.i++;
 		}
@@ -82,16 +63,16 @@ int	ft_printf(const char *format, ...)
 	return (sizes.size);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 #include <limits.h>
 int main ()
 {
-	int result = ft_printf(" %#x ", 0);
+	int result = ft_printf(" %#x ",0);
 	printf("\n");
 	printf("%i", result);
 	printf("\n");
-	int result_2 = printf(" %#x ", 0);
+	int result_2 = printf(" %#x ",0);
 	printf("\n");
 	printf("%i", result_2);
 	printf("\n");
-}
+} */
