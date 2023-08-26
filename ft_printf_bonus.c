@@ -6,7 +6,7 @@
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 08:28:41 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 12:36:16 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 13:28:38 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,3 @@ int	ft_printf(const char *format, ...)
 	va_end(arg);
 	return (sizes.size);
 }
-
-/* #include <stdio.h>
-#include <limits.h>
-int main ()
-{
-	int result = ft_printf("%i", 5);
-	printf("\n");
-	printf("%i", result);
-	printf("\n");
-	int result_2 = printf("%+s", "nat");
-	printf("\n");
-	printf("%i", result_2);
-	printf("\n");
-} */
