@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 11:00:04 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 13:28:07 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/28 18:17:40 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,25 @@ void	ft_hash(const char *format, t_sizes *sizes, va_list arg)
 {
 	unsigned int	n;
 
-	if (format[++sizes->i + 1] == 'x')
+	while (format[++sizes->i] == '#')
 	{
-		n = va_arg(arg, unsigned int);
-		if (n > 0)
+		if (format[sizes->i + 1] == 'x' || format[sizes->i + 1] == 'X')
 		{
-			sizes->size += ft_putstr("0x");
-			sizes->size += ft_putnbr_hx(n, "0123456789abcdef");
+			n = va_arg(arg, unsigned int);
+			if (n > 0 && format[sizes->i + 1] == 'x')
+			{
+				sizes->size += ft_putstr("0x");
+				sizes->size += ft_putnbr_hx(n, "0123456789abcdef");
+			}
+			else if (n > 0 && format[sizes->i + 1] == 'X')
+			{
+				sizes->size += ft_putstr("0X");
+				sizes->size += ft_putnbr_hx(n, "0123456789ABCDEF");
+			}
+			else
+				sizes->size += ft_putnbr(n);
+			break ;
 		}
-		else
-			sizes->size += ft_putnbr(n);
-	}
-	else if (format[sizes->i + 1] == 'X')
-	{
-		n = va_arg(arg, unsigned int);
-		if (n > 0)
-		{
-			sizes->size += ft_putstr("0X");
-			sizes->size += ft_putnbr_hx(n, "0123456789ABCDEF");
-		}
-		else
-			sizes->size += ft_putnbr(n);
 	}
 	return ;
 }
@@ -46,22 +44,26 @@ void	ft_space(const char *format, t_sizes *sizes, va_list arg)
 	int		n;
 	char	*str;
 
-	sizes->i++;
-	if (format[sizes->i + 1] == 'i' || format[sizes->i + 1] == 'd')
+	while (format[++sizes->i] == ' ')
 	{
-		n = va_arg(arg, int);
-		if (n >= 0)
+		if (format[sizes->i + 1] == 'i' || format[sizes->i + 1] == 'd')
 		{
-			sizes->size += ft_putchar(' ');
-			sizes->size += ft_putnbr(n);
+			n = va_arg(arg, int);
+			if (n >= 0)
+			{
+				sizes->size += ft_putchar(' ');
+				sizes->size += ft_putnbr(n);
+			}
+			else
+				sizes->size += ft_putnbr(n);
+			break ;
 		}
-		else
-			sizes->size += ft_putnbr(n);
-	}
-	else if (format[sizes->i + 1] == 's')
-	{
-		str = va_arg(arg, char *);
-		sizes->size += ft_putstr(str);
+		else if (format[sizes->i + 1] == 's')
+		{
+			str = va_arg(arg, char *);
+			sizes->size += ft_putstr(str);
+			break ;
+		}
 	}
 	return ;
 }
