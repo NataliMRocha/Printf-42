@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:05:40 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/26 09:13:31 by natali           ###   ########.fr       */
+/*   Updated: 2023/08/26 12:42:21 by natali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include <unistd.h>
 # include <stdarg.h>
+
+typedef struct s_sizes{
+	int	i;
+	int	size;
+}	t_sizes;
 
 /**@brief Repeat the behavior of the printf fuction
  * 
@@ -76,5 +81,23 @@ int		ft_putnbr_hx(unsigned int hx, char *base);
  * @return the amount of bytes that were written
 */
 int		ft_putptr(unsigned long ptr, char *base);
+
+/**@brief Handles with the space flag
+ * 
+ * @param format the the format of conversion to do and
+ * all arguments passed
+ * @param size the struct with the index and size
+ * @param arg the argument to be printed
+*/
+void	ft_space(const char *format, t_sizes *sizes, va_list arg);
+
+/**@brief Handles with the hash flag
+ * 
+ * @param format the format of conversion to do and
+ * all arguments passed
+ * @param size the struct with the index and size
+ * @param arg the argument to be printed
+*/
+void	ft_hash(const char *format, t_sizes *sizes, va_list arg);
 
 #endif
