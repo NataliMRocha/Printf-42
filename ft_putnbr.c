@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 10:30:22 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/24 15:41:58 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/09/04 10:52:11 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,31 @@ int	ft_putnbr_hx(unsigned int hx, char *base)
 	{
 		size += ft_putnbr_hx(hx / 16, base);
 		size += ft_putchar(base[hx % 16]);
+	}
+	return (size);
+}
+
+int	ft_putptr(unsigned long ptr, char *base)
+{
+	int			size;
+
+	if ((void *)ptr == NULL || ptr == 0)
+	{
+		write(1, "(nil)", 5);
+		size = 5;
+		return (size);
+	}
+	size = 0;
+	if (ptr < 16)
+	{
+		write(1, "0x", 2);
+		size = 2;
+		size += ft_putchar(base[ptr % 16]);
+	}
+	else if (ptr >= 16)
+	{
+		size += ft_putptr(ptr / 16, base);
+		size += ft_putchar(base[ptr % 16]);
 	}
 	return (size);
 }

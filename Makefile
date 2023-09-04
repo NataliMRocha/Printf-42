@@ -5,16 +5,12 @@ CC = cc
 FLAGS = -g3 -Wall -Wextra -Werror
 
 SRC =	./ft_printf.c \
-		./ft_putchar.c \
 		./ft_putnbr.c \
-		./ft_putptr.c \
 
 OBJECTS = $(SRC:%.c=%.o)
 
 SRC_B =	./ft_printf_bonus.c \
-		./ft_putchar_bonus.c \
 		./ft_putnbr_bonus.c \
-		./ft_putptr_bonus.c \
 		./ft_flags_bonus.c \
 
 

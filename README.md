@@ -21,10 +21,8 @@ The purpose of this project is to repeat the behavior of the printf function but
 
 | Files | Description |
 | :------: | :---------: |
-| ``ft_putchar.c`` | Contains the functions that deal with char or strings.|
-| ``ft_putnbr.c`` | Contains the functions that deal with hexadecimal, decimal and integers numbers. |
-| ``ft_putptr.c`` | Contains the functions that deal with pointers. |
-| ``ft_printf.c`` | Contains the principal function, the function who deal with the type of data and the function who checks if is a conversion to deal with.|
+| ``ft_putnbr.c`` | Contains the functions that deal with hexadecimal, decimal, integers numbers and pointers. |
+| ``ft_printf.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
 | ``ft_printf.h`` | The header with functions libraries and prototypes. |
 | ``Makefile`` | The automatizated compilator|
 
