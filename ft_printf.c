@@ -6,11 +6,38 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:50:19 by namoreir          #+#    #+#             */
-/*   Updated: 2023/08/25 20:33:45 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:06:44 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *str)
+{
+	int	size;
+	int	i;
+
+	size = 0;
+	if (str)
+	{
+		i = 0;
+		while (str[i])
+		{
+			write(1, &str[i], 1);
+			size++;
+			i++;
+		}
+	}
+	else
+		size += ft_putstr("(null)");
+	return (size);
+}
 
 int	ft_checkformat(char type, va_list arg)
 {
@@ -32,7 +59,10 @@ int	ft_checkformat(char type, va_list arg)
 	else if (type == 'X')
 		size += ft_putnbr_hx(va_arg(arg, unsigned int), "0123456789ABCDEF");
 	else if (type == '%')
-		size += ft_putchar('%');
+	{
+		write(1, "%", 1);
+		size++;
+	}
 	return (size);
 }
 
@@ -53,7 +83,10 @@ int	ft_printf(const char *format, ...)
 			i++;
 		}
 		else
-			size += ft_putchar(format[i]);
+		{
+			write(1, &format[i], 1);
+			size++;
+		}
 		i++;
 	}
 	va_end(arg);
