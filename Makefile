@@ -26,7 +26,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 
-bonus: $(OBJECTS_B)
+bonus: fclean $(OBJECTS_B)
 
 %.o:%.c $(INCLUDES) $(INCLUDES_B) 
 	${CC} ${FLAGS} -c $< -o $@
