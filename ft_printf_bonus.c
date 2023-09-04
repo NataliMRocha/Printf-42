@@ -3,14 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: natali <natali@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 08:28:41 by natali            #+#    #+#             */
-/*   Updated: 2023/08/26 13:28:38 by natali           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:06:56 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
+
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *str)
+{
+	int	size;
+	int	i;
+
+	size = 0;
+	if (str)
+	{
+		i = 0;
+		while (str[i])
+		{
+			write(1, &str[i], 1);
+			size++;
+			i++;
+		}
+	}
+	else
+		size += ft_putstr("(null)");
+	return (size);
+}
 
 int	ft_checkformat(char type, va_list arg)
 {
@@ -32,7 +59,10 @@ int	ft_checkformat(char type, va_list arg)
 	else if (type == 'X')
 		size += ft_putnbr_hx(va_arg(arg, unsigned int), "0123456789ABCDEF");
 	else if (type == '%')
-		size += ft_putchar('%');
+	{
+		write(1, "%", 1);
+		size++;
+	}
 	return (size);
 }
 
