@@ -42,9 +42,8 @@ In your code, simply include its header:
 ``` C
 #include "libftprintf.h"
 ```
-
 And, when compiling your code, add the required flags:
 
 ``` shell
-$> -L ./libftprintf -lft
+$> make && cc -w -o file file.c -L./ -lftprintf && ./file
 ```
