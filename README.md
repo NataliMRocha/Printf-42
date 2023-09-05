@@ -25,7 +25,9 @@ The purpose of this project is to repeat the behavior of the printf function but
 | ``ft_printf.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
 | ``ft_printf.h`` | The header with functions libraries and prototypes. |
 | ``ft_printf_bonus.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
+| ``ft_putnbr_bonus.c`` | Contains the functions that deal with hexadecimal, decimal, integers numbers and pointers. |
 | ``ft_flags_bonus.c`` | Contains the functions that deal with the flags. |
+| ``ft_printf_bonus.h`` | The header with functions libraries and prototypes. |
 | ``Makefile`` | The automatizated compilator|
 
 ## :star: Bonus
