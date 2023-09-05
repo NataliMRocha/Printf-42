@@ -1,8 +1,8 @@
 # :clipboard: Printf | 42 SP
 - Actual Status : finished.
-- Result        : waiting evaluation
+- Result        : Approved with 105 points by moulinette (the 42 tester) ✅
   
-  Prinft is the second project at 42.
+  Prinft is the third project at 42.
 The purpose of this project is to repeat the behavior of the printf function but we only deal with some cases.
 
 #### We need to implement the following conversions:
@@ -24,8 +24,13 @@ The purpose of this project is to repeat the behavior of the printf function but
 | ``ft_putnbr.c`` | Contains the functions that deal with hexadecimal, decimal, integers numbers and pointers. |
 | ``ft_printf.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
 | ``ft_printf.h`` | The header with functions libraries and prototypes. |
+| ``ft_printf_bonus.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
+| ``ft_flags_bonus.c`` | Contains the functions that deal with the flags. |
 | ``Makefile`` | The automatizated compilator|
 
+## :star: Bonus
+To make the bonus, we need to deal with flags.
+I choose to deal with the '#' flag and the space flag only.
 
 ## 🛠️ Usage
 
@@ -45,5 +50,5 @@ In your code, simply include its header:
 And, when compiling your code, add the required flags:
 
 ``` shell
-$> make && cc -w -o file file.c -L./ -lftprintf && ./file
+$> make && cc -w -o your_file your_file.c -L./ -lftprintf && ./your_file
 ```
