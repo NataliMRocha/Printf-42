@@ -1,43 +1,83 @@
 NAME = libftprintf.a
 
-CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-FLAGS = -g3 -Wall -Wextra -Werror
+# Path Definition
+BIN_PATH = ./bin/
+MANDATORY_HEADER_PATH = ./mandatory/includes/
+MANDATORY_SOURCES_PATH = ./mandatory/src/
+BONUS_HEADER_PATH = ./bonus/includes/
+BONUS_SOURCES_PATH = ./bonus/src/
 
-SRC =	./ft_printf.c \
-		./ft_putnbr.c \
+# Colors Definition
+GREEN = "\033[32m"
+RED = "\033[31m"
+VIOLATE = "\033[38;5;208m"
+COLOR_LIMITER = "\033[0m"
 
-OBJECTS = $(SRC:%.c=%.o)
+# Sources Definition
+SOURCES = \
+	ft_printf.c \
+	ft_putnbr.c \
 
-SRC_B =	./ft_printf_bonus.c \
-		./ft_putnbr_bonus.c \
-		./ft_flags_bonus.c \
+BONUS_SOURCES = \
+	ft_printf_bonus.c \
+	ft_putnbr_bonus.c \
+	ft_flags_bonus.c \
 
+# Objects Definition
+OBJECTS = $(addprefix $(BIN_PATH), $(SOURCES:%.c=%.o))
+BONUS_OBJECTS = $(addprefix $(BIN_PATH), $(BONUS_SOURCES:%.c=%.o))
 
-OBJECTS_B = $(SRC_B:%.c=%.o)
+# Verification of Mandatory Files
+PRINTF_MANDATORY = ft_printf.o
+MANDATORY_CHECK = $(shell ar -t $(NAME) $(PRINTF_MANDATORY) 2>&1)
 
-INCLUDES = ft_printf.h
+# Verification of Bonus Files
+PRINTF_BONUS = ft_printf_bonus.o
+BONUS_CHECK = $(shell ar -t $(NAME) $(PRINTF_BONUS) 2>&1)
 
-INCLUDES_B = ft_printf_bonus.h
+ifneq ($(BONUS_CHECK), $(PRINTF_BONUS))
+all: $(BIN_PATH) $(NAME)
+endif
 
-RM = rm -f
-
-all: $(NAME)
+$(BIN_PATH)%.o: $(MANDATORY_SOURCES_PATH)%.c
+	@echo $(GREEN)[Compiling]$(COLOR_LIMITER) $(notdir $(<))...
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(MANDATORY_HEADER_PATH)
 
 $(NAME): $(OBJECTS)
+	@echo $(VIOLATE) -------------------------------------------- $(COLOR_LIMITER)
+	@echo $(VIOLATE)"| libftprintf.a Was Generated Successfully!! |"$(COLOR_LIMITER)
+	@echo $(VIOLATE) -------------------------------------------- $(COLOR_LIMITER)
+	@echo " "
+	@ar rcs $(NAME) $?
 
-bonus: fclean $(OBJECTS_B)
+$(BIN_PATH):
+	@mkdir -p $(BIN_PATH)
 
-%.o:%.c $(INCLUDES) $(INCLUDES_B) 
-	${CC} ${FLAGS} -c $< -o $@
-	ar rc $(NAME) $@
+ifeq ($(MANDATORY_CHECK), $(PRINTF_MANDATORY))
+bonus: fclean
+	@make --no-print-directory \
+	OBJECTS="$(BONUS_OBJECTS)" \
+	MANDATORY_HEADER_PATH="$(BONUS_HEADER_PATH)" \
+	MANDATORY_SOURCES_PATH="$(BONUS_SOURCES_PATH)"
+else
+bonus:
+	@make --no-print-directory \
+	OBJECTS="$(BONUS_OBJECTS)" \
+	MANDATORY_HEADER_PATH="$(BONUS_HEADER_PATH)" \
+	MANDATORY_SOURCES_PATH="$(BONUS_SOURCES_PATH)"
+endif
 
 clean:
-	$(RM) $(OBJECTS) $(OBJECTS_B)
+	@echo $(RED)[Removing Objects...]$(COLOR_LIMITER)
+	@rm -rf $(BIN_PATH)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo $(RED)[Removing $(notdir $(NAME))...]$(COLOR_LIMITER)
+	@rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	@make --no-print-directory
 
-.PHONY:	all clean fclean re bonusgi
+.PHONY: all clean fclean re bonus
